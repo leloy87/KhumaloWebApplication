@@ -1,0 +1,286 @@
+﻿@using KhumaloWebApplication.Models
+@model List<Products>
+
+@{
+    ViewData["Title"] = "MyWork";
+}
+
+<h1>My Work</h1>
+
+<!-- Include CSS -->
+<style>
+    #productContainer {
+        margin-top: 30px;
+    }
+
+    .product-category {
+        margin-top: 50px;
+    }
+
+        .product-category h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+    .product-item {
+        margin-bottom: 30px;
+    }
+
+    .product-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+        .product-card:hover {
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+
+    .card-img-top {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        max-height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+        .card-img-top:hover {
+            transform: scale(1.1);
+        }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    .btn-custom {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<!-- Filters -->
+<div class="filters mb-4">
+    <div class="row">
+        <div class="col-md-4">
+            <select id="categoryFilter" class="form-control">
+                <option value="all">All Categories</option>
+                <option value="jewelry">Jewelry</option>
+                <option value="pottery">Pottery</option>
+                <option value="bags">Bags</option>
+                <option value="artwork">Artwork</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select id="priceFilter" class="form-control">
+                <option value="all">All Prices</option>
+                <option value="0-500">0 - 500</option>
+                <option value="501-1000">501 - 1000</option>
+                <option value="1001-1500">1001 - 1500</option>
+                <option value="1501">1500+</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<!-- Product Grid -->
+<h2 class="text-center mb-4">Database Products</h2>
+<div class="row" id="productContainer">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4 mb-4 product-item" data-category="@product.Category" data-price="@product.Price">
+            <div class="card h-100 product-card">
+                <img src="@Url.Content(product.ImageUrl)" class="card-img-top" alt="@product.Name" />
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                    <p class="card-text">R@(product.Price)</p>
+                    @if (product.Availability)
+                    {
+                        <p class="card-text text-success">Available</p>
+                    }
+                    else
+                    {
+                        <p class="card-text text-danger">Unavailable</p>
+                    }
+                    <button class="btn btn-custom add-to-cart-btn" data-product-id="@product.ProductId">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row" id="productContainer">
+    <div class="col-md-12 product-category">
+        <h2>Jewelry</h2>
+    </div>
+
+    <!-- Product 1 -->
+    <div class="col-md-4 mb-4 product-item" data-category="jewelry" data-price="1200">
+        <div class="card h-100 product-card">
+            <img src="~/images/neckp.jfif" class="card-img-top" alt="The Etheral Set">
+            <div class="card-body">
+                <h5 class="card-title">The Etheral Set</h5>
+                <p class="card-text">
+                    Make a stunning impression with our vibrant neckpiece set. Handcrafted to perfection,
+                    this opulent piece of jewelry exudes sophistication and glamour. Its intricate design and radiant finish
+                    effortlessly elevate any outfit, making it the perfect accessory for special occasions and everyday wear.
+                </p>
+                <p class="card-text">R1200.00</p>
+                <button class="btn btn-custom add-to-cart-btn" data-product-id="1">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="col-md-4 mb-4 product-item" data-category="jewelry" data-price="200">
+        <div class="card h-100 product-card">
+            <img src="~/images/nose.jfif" class="card-img-top" alt="Moderna Nose Piece">
+            <div class="card-body">
+                <h5 class="card-title">Moderna Nose Piece</h5>
+                <p class="card-text">
+                    One handcrafted 24k gold plated nose piece jewelry. Crafted from premium quality gold, this delicate piece of jewelry features
+                    intricate detailing and a subtle shine, adding a touch of elegance to your look. Whether worn alone or paired with other accessories,
+                    this timeless nose ring is sure to make a statement.
+                </p>
+                <p class="card-text">R200.00</p>
+                <button class="btn btn-custom add-to-cart-btn" data-product-id="2">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="col-md-4 mb-4 product-item" data-category="jewelry" data-price="940">
+        <div class="card h-100 product-card">
+            <img src="~/images/ring.jfif" class="card-img-top" alt="Limited Edition Gold Ring">
+            <div class="card-body">
+                <h5 class="card-title">Limited Edition Gold Ring</h5>
+                <p class="card-text">
+                    Each ring is a testament to exquisite craftsmanship and attention to detail, showcasing the inherent beauty of gold in its purest form.
+                    Delicately designed and expertly polished, our gold rings radiate sophistication and charm, making them the perfect statement piece for any occasion.
+                    Elevate your style with a touch of luxury and grace, and let our handcrafted gold ring become a cherished heirloom to be treasured for generations to come.
+                </p>
+                <p class="card-text">R940.00</p>
+                <button class="btn btn-custom add-to-cart-btn" data-product-id="3">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="productContainer">
+    <div class="col-md-12 product-category">
+        <h2>More products</h2>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="col-md-4 mb-4 product-item" data-category="pottery" data-price="600">
+        <div class="card h-100 product-card">
+            <img src="~/images/pot1.jfif" class="card-img-top" alt="Artisanal Ceramic Vase">
+            <div class="card-body">
+                <h5 class="card-title">Artisanal Ceramic Vase</h5>
+                <p class="card-text">Elevate your home decor with our artisan ceramic vase. Hand-thrown and glazed to perfection, this vase boasts a timeless elegance that effortlessly enhances any space.</p>
+                <p class="card-text">R600.00</p>
+                <button class="btn btn-custom add-to-cart-btn" data-product-id="4">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="col-md-4 mb-4 product-item" data-category="bags" data-price="500">
+        <div class="card h-100 product-card">
+            <img src="~/images/bag.jfif" class="card-img-top" alt="Handcrafted Leather Carry Bag">
+            <div class="card-body">
+                <h5 class="card-title">Handcrafted Leather Carry Bag</h5>
+                <p class="card-text">
+                    Elevate your everyday essentials with our handcrafted crocodile leather bag. Meticulously crafted by skilled artisans,
+                    each bag exudes timeless elegance and unmatched quality.
+                </p>
+                <p class="card-text">R500.00</p>
+                <button class="btn btn-custom add-to-cart-btn" data-product-id="5">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="col-md-4 mb-4 product-item" data-category="artwork" data-price="450">
+        <div class="card h-100 product-card">
+            <img src="~/images/art.jfif" class="card-img-top" alt="Contemporary Abstract Art Piece">
+            <div class="card-body">
+                <h5 class="card-title">Contemporary Abstract Art Piece</h5>
+                <p class="card-text">
+                    Add a touch of sophistication to your living space with our handcrafted contemporary abstract art piece.
+                    Each stroke and hue has been carefully curated to evoke emotion and inspire contemplation.
+                </p>
+                <p class="card-text">R450.00</p>
+                <button class="btn btn-custom add-to-cart-btn" data-product-id="6">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add jQuery for filtering products by category and price -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Add to Cart button click event
+        $('.add-to-cart-btn').click(function () {
+            var productId = $(this).data('product-id');
+
+            // Send AJAX request to add product to cart
+            $.ajax({
+                url: '@Url.Action("AddToCart", "ShoppingCart")',
+                type: 'POST',
+                data: { productId: productId, quantity: 1 },
+                success: function (response) {
+                    // Redirect to shopping cart page
+                    window.location.href = '@Url.Action("Index", "ShoppingCart")';
+                },
+                error: function (xhr, status, error) {
+                    // Display error message if request fails
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+
+        // Filter products by category and price
+        $('#categoryFilter, #priceFilter').change(function () {
+            var selectedCategory = $('#categoryFilter').val();
+            var selectedPriceRange = $('#priceFilter').val().split('-');
+            var minPrice = selectedPriceRange[0];
+            var maxPrice = selectedPriceRange[1] || Number.MAX_VALUE;
+
+            $('.product-item').each(function () {
+                var productCategory = $(this).data('category');
+                var productPrice = parseFloat($(this).data('price'));
+
+                if ((selectedCategory === 'all' || productCategory === selectedCategory) &&
+                    (selectedPriceRange === 'all' || (productPrice >= minPrice && productPrice <= maxPrice))) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>

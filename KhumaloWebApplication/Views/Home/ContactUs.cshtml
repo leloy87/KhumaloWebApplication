@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .hero_area {
+            background-image: url('background_image.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+        }
+
+        .contactus_section {
+            padding: 50px 0;
+        }
+
+        .well {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .legend {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            border-radius: 0;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 30px;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .contact-details {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+            .contact-details h3 {
+                margin-top: 0;
+                font-size: 22px;
+            }
+
+            .contact-details p {
+                margin-bottom: 5px;
+            }
+    </style>
+</head>
+
+<body class="sub_page">
+    <div class="hero_area">
+        <!-- header section strats -->
+        <!-- end header section -->
+    </div>
+
+    <!-- contact us section -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <section class="contactus_section layout_padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="well well-sm">
+                                    <form class="form-horizontal" action="" method="post">
+                                        <fieldset>
+                                            <legend class="text-center legend">Contact us</legend>
+
+                                            <!-- Name input-->
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="name">Name</label>
+                                                <div class="col-md-9">
+                                                    <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <!-- Surname input-->
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="surname">Surname</label>
+                                                <div class="col-md-9">
+                                                    <input id="surname" surname="surname" type="text" placeholder="Your surname" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <!-- Email input-->
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="email">Your E-mail</label>
+                                                <div class="col-md-9">
+                                                    <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <!-- Message body -->
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="message">Your message</label>
+                                                <div class="col-md-9">
+                                                    <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <!-- Form actions -->
+                                            <div class="form-group">
+                                                <div class="col-md-12 text-center">
+                                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-4">
+                <div class="contact-details">
+                    <h3>Contact Details</h3>
+                    <p><strong>Address:</strong> South Africa</p>
+                    <p><strong>Phone:</strong> +1234567890</p>
+                    <p><strong>Email:</strong> info@khumalocraftemporium.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end contact section -->
+</body>
+
+</html>
